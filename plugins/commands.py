@@ -656,7 +656,7 @@ async def start(client, message):
             logger.exception(e)
             f_caption=f_caption
     if f_caption is None:
-        f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files['file_name'].split()))}"
+        f_caption = f"{'@AllBotUpdatemy '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files['file_name'].split()))}"
     if not await db.has_premium_access(message.from_user.id):
         if not await check_verification(client, message.from_user.id) and VERIFY == True:
             btn = [[
@@ -707,7 +707,7 @@ async def channel_info(bot, message):
     for channel in channels:
         chat = await bot.get_chat(channel)
         if chat.username:
-            text += '\n@' + chat.username
+            text += '\n@AllBotUpdatemy' + chat.username
         else:
             text += '\n' + chat.title or chat.first_name
 
