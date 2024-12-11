@@ -530,7 +530,7 @@ async def start(client, message):
                     logger.exception(e)
                     f_caption=f_caption
             if f_caption is None:
-                f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files1['file_name'].split()))}"
+                f_caption = f"{'@AllBotUpdatemy '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files1['file_name'].split()))}"
             if not await db.has_premium_access(message.from_user.id):
                 if not await check_verification(client, message.from_user.id) and VERIFY == True:
                     btn = [[
@@ -646,7 +646,7 @@ async def start(client, message):
             pass
         return await message.reply('No such file exist.')
     files = files_
-    title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files["file_name"].split()))
+    title = '@AllBotUpdatemy '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files["file_name"].split()))
     size=get_size(files["file_size"])
     f_caption=files["caption"]
     if CUSTOM_FILE_CAPTION:
@@ -665,7 +665,7 @@ async def start(client, message):
                 InlineKeyboardButton("How To Open Link & Verify", url=VERIFY_TUTORIAL)
             ]]
             await message.reply_text(
-                text="<b>You are not verified !\nKindly verify to continue !</b>",
+                text="<b>You are not verified !\Just Verify One Time And Get \nMovies For next 24hr without any \nverification \n\nশুধু একবার verify করুন এবং পরবর্তী !\n24 ঘন্টার জন্য কোনো verification ছাড়াই সিনেমা পান \n\nClick The Button Below \nTo Check How to Verify✅ !</b>",
                 protect_content=True,
                 reply_markup=InlineKeyboardMarkup(btn)
             )
@@ -763,7 +763,7 @@ async def delete(bot, message):
         unwanted_chars = ['[', ']', '(', ')']
         for char in unwanted_chars:
             file_name = file_name.replace(char, '')
-        file_name = ' '.join(filter(lambda x: not x.startswith('@'), file_name.split()))
+        file_name = ' @AllBotUpdatemy'.join(filter(lambda x: not x.startswith('@'), file_name.split()))
     
         result = col.delete_many({
             'file_name': file_name,
