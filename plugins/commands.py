@@ -622,7 +622,7 @@ async def start(client, message):
             )
             filetype = msg.media
             file = getattr(msg, filetype.value)
-            title = '@AllBotUpdatemy  ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), file.file_name.split()))
+            title = '  ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), file.file_name.split()))
             size=get_size(file.file_size)
             f_caption = f"<code>{title}</code>"
             if CUSTOM_FILE_CAPTION:
@@ -646,7 +646,7 @@ async def start(client, message):
             pass
         return await message.reply('No such file exist.')
     files = files_
-    title = '@AllBotUpdatemy '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files["file_name"].split()))
+    title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files["file_name"].split()))
     size=get_size(files["file_size"])
     f_caption=files["caption"]
     if CUSTOM_FILE_CAPTION:
@@ -707,7 +707,7 @@ async def channel_info(bot, message):
     for channel in channels:
         chat = await bot.get_chat(channel)
         if chat.username:
-            text += '\n@AllBotUpdatemy' + chat.username
+            text += '\n' + chat.username
         else:
             text += '\n' + chat.title or chat.first_name
 
@@ -763,7 +763,7 @@ async def delete(bot, message):
         unwanted_chars = ['[', ']', '(', ')']
         for char in unwanted_chars:
             file_name = file_name.replace(char, '')
-        file_name = ' @AllBotUpdatemy'.join(filter(lambda x: not x.startswith('@'), file_name.split()))
+        file_name = ' '.join(filter(lambda x: not x.startswith('@'), file_name.split()))
     
         result = col.delete_many({
             'file_name': file_name,
